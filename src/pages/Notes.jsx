@@ -2,6 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import { db } from '../config/firebase'
 import { getDocs, collection } from 'firebase/firestore'
+import { Link } from 'react-router-dom'
 
 function Notes() {
     const [notes, setNotes] = useState([])
@@ -26,7 +27,8 @@ function Notes() {
             {
                 notes.map(note => (
                     <div key={note.id} className='my-3 text-center'>
-                        <h3 className='text-xl font-bold'>{note.title}</h3>
+                        
+                        <h3 className='text-xl font-bold'><Link to={`/update/${note.id}`}>{note.title}</Link></h3>
                         <p>{note.desc}</p>
                     </div>
                 ))
