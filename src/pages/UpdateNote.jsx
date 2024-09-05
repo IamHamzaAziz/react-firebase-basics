@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { doc, getDoc, updateDoc } from 'firebase/firestore'
+import { doc, getDoc, updateDoc, deleteDoc } from 'firebase/firestore'
 import { db } from '../config/firebase'
 
 function UpdateNote() {
@@ -32,6 +32,17 @@ function UpdateNote() {
         alert('Note updated')
     }
 
+    const deleteNote = async () => {
+        try {
+            const noteDoc = doc(db, 'notes', id)
+            await deleteDoc(noteDoc)
+            alert('Note deleted')
+        } catch (error) {
+            alert('Unable to delete note')
+            console.error('Error deleting document: ', error)
+        }
+    }
+
 
 
     return (
@@ -50,6 +61,7 @@ function UpdateNote() {
                             className='border border-black p-2 rounded'
                         />
                         <button onClick={updateNote} className='p-2 bg-blue-600 text-white w-32 rounded'>Update</button>
+                        <button onClick={deleteNote} className='p-2 bg-red-600 text-white w-32 rounded'>Delete</button>
                     </>
                 )
             }

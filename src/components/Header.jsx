@@ -9,6 +9,7 @@ function Header() {
                 <li><Link to={'/sign-up'}>SignUp</Link></li>
                 <li><Link to={'/notes'}>Notes</Link></li>
                 <li><Link to={'/create-note'}>Create Note</Link></li>
+                <li><Link to={'/upload'}>Upload File</Link></li>
             </ul>
         </header>
     )
